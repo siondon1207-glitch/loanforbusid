@@ -1,23 +1,968 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "2026년 개인사업자 정부 지원 대출의 평균 금리와 한도는 얼마인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "2026년 기준 개인사업자 정부 지원 대출의 평균 금리는 상품 종류에 따라 연 2.5%에서 4.5% 수준으로 책정되고 있습니다. 최대 지원 예상 금액은 소상공인시장진흥공단 기준 정책 자금의 경우 일반 경영안정자금은 최대 7천만 원, 특허나 신기술을 보유한 유망 소상공인은 최대 1억 원에서 2억 원 수준까지 집행 가능합니다. 한도와 이자율은 신용평점 및 연간 매출액 기준에 따라 차등 적용됩니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "시중 은행의 일반 다이렉트 신용대출 상품과 정부 지원 상품의 결정적인 차이점은 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "가장 큰 차이점은 보증 기관의 개입 여부와 가산금리 할인 혜택입니다. 일반 다이렉트 상품은 차주의 순수 신용 등급 및 대출 실행 업체의 내부 기준에 따라 가산금리가 높게 부과되고 중도상환수수료가 발생하는 반면, 보증재단과 연계된 정부 지원 상품은 공적 보증을 기반으로 조달 비용이 대폭 절감되어 한도 조건이 대칭형 구조처럼 안정적으로 유지되고 중도상환 비용 역시 면제되는 장점이 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "인터넷이나 모바일 앱을 이용해 비대면 온라인 가입 신청 시 유의해야 할 사항이 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "정부 지원 사업을 사칭하여 무조건적인 현금지원금, 수수료 선입금, 고가의 사은 상품권 제공, 혹은 가입 축하 이벤트 등을 제시하며 현혹하는 미인증 대리점이나 전문 브로커를 철저히 경계해야 합니다. 공식 정부 지원 상품은 별도의 알선 수수료가 일절 요구되지 않으며, 공식 금융기관 및 정부 산하 기관 홈페이지를 통해 직접 신청하는 것이 안전합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "신용 점수가 낮은 저신용 개인사업자도 신청할 수 있는 상품 종류는 어떤 것들이 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "서민금융진흥원의 햇살론 15, 미소금융 상품 및 지역 신용보증재단의 희망플러스 보증대출 등이 대표적입니다. 이러한 저신용자 전용 상품들은 보증 비율을 높여 리스크를 정부가 분담하며, 연간 소득 수준이나 업력 조건을 충족할 경우 일반 1금융권 은행에서도 비교적 수월하게 상담 및 실행 절차를 진행할 수 있습니다."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary-navy: #1a2b49;
+            --secondary-blue: #4b6584;
+            --accent-gold: #cb9933;
+            --light-bg: #f4f6f9;
+            --white: #ffffff;
+            --text-dark: #2d3436;
+            --text-muted: #7f8c8d;
+            --border-light: #e2e8f0;
+            --gradient-start: #111e38;
+            --gradient-end: #203a5c;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: var(--white);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.6em;
+            font-weight: 900;
+            color: var(--primary-navy);
+        }
+
+        header h1 a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        header nav a {
+            text-decoration: none;
+            color: var(--secondary-blue);
+            font-weight: 500;
+            margin-left: 25px;
+            font-size: 1.05em;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: var(--white);
+            padding: 90px 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            font-weight: 900;
+            line-height: 1.4;
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 45px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            align-items: center;
+            text-align: left;
+        }
+
+        .hero-text {
+            color: var(--white);
+        }
+
+        .cta-box {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            color: var(--text-dark);
+        }
+
+        .cta-box h3 {
+            font-size: 1.6em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: var(--primary-navy);
+            font-weight: 700;
+            border-left: 4px solid var(--accent-gold);
+            padding-left: 12px;
+        }
+
+        .cta-box p {
+            font-size: 1em;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .cta-form-label {
+            font-size: 0.95em;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .cta-box input[type="text"],
+        .cta-box input[type="tel"],
+        .cta-box select {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 1em;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            transition: border-color 0.3s ease;
+        }
+
+        .cta-box input:focus, .cta-box select:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .cta-btn {
+            background-color: var(--accent-gold);
+            color: var(--white);
+            padding: 16px;
+            font-size: 1.15em;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+            display: block;
+        }
+
+        .cta-btn:hover {
+            background-color: #b5862a;
+            transform: translateY(-2px);
+        }
+
+        .interactive-calculator {
+            background-color: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 60px;
+            border: 1px solid var(--border-light);
+        }
+
+        .interactive-calculator h3 {
+            color: var(--primary-navy);
+            margin-top: 0;
+            font-size: 1.7em;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .calc-input-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .calc-input-group label {
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--secondary-blue);
+        }
+
+        .calc-input-group input, .calc-input-group select {
+            padding: 14px;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            font-size: 1em;
+            background-color: var(--light-bg);
+        }
+
+        .calc-result-box {
+            grid-column: 1 / -1;
+            background-color: var(--light-bg);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .calc-result-box p {
+            margin: 5px 0;
+            font-size: 1.1em;
+        }
+
+        .calc-result-box .result-val {
+            font-size: 2em;
+            font-weight: 900;
+            color: var(--accent-gold);
+        }
+
+        .content-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .content-section.alt-bg {
+            background-color: var(--light-bg);
+        }
+
+        .section-title {
+            font-size: 2.4em;
+            color: var(--primary-navy);
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 900;
+        }
+
+        .section-desc {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.15em;
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+        }
+
+        .article-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            border: 1px solid var(--border-light);
+            margin-bottom: 40px;
+        }
+
+        .article-card h3 {
+            color: var(--primary-navy);
+            font-size: 1.8em;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .article-card p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: var(--text-dark);
+        }
+
+        .article-card ul {
+            padding-left: 20px;
+            margin-bottom: 25px;
+        }
+
+        .article-card li {
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 1.05em;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-light);
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 18px;
+            text-align: center;
+            border: 1px solid var(--border-light);
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-navy);
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .comparison-table tr:nth-child(even) td {
+            background-color: var(--light-bg);
+        }
+
+        .comparison-table td strong {
+            color: var(--accent-gold);
+        }
+
+        .keyword-cloud {
+            background-color: var(--white);
+            border-radius: 16px;
+            padding: 45px;
+            margin: 60px 0;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .keyword-cloud h3 {
+            color: var(--primary-navy);
+            font-size: 1.5em;
+            margin-top: 0;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .cloud-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .cloud-tags span {
+            background-color: var(--light-bg);
+            color: var(--secondary-blue);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.95em;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .cloud-tags span:hover {
+            background-color: var(--primary-navy);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .faq-accordion {
+            margin-top: 40px;
+        }
+
+        .faq-item {
+            background-color: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-trigger {
+            padding: 22px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.15em;
+            color: var(--primary-navy);
+            background-color: var(--white);
+        }
+
+        .faq-trigger::after {
+            content: "+";
+            font-size: 1.5em;
+            color: var(--accent-gold);
+            font-weight: 400;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-content {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            font-size: 1.05em;
+        }
+
+        .faq-item.active .faq-trigger::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-item.active .faq-content {
+            padding: 25px 30px;
+            max-height: 1000px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .chart-container {
+            background-color: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+        }
+
+        .bar-chart {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            height: 250px;
+            padding-top: 20px;
+            border-bottom: 2px solid var(--secondary-blue);
+        }
+
+        .chart-bar-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 15%;
+        }
+
+        .bar {
+            width: 100%;
+            background-color: var(--primary-navy);
+            border-radius: 6px 6px 0 0;
+            transition: height 0.6s ease;
+            text-align: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.9em;
+            padding-top: 8px;
+            box-sizing: border-box;
+        }
+
+        .bar.highlight {
+            background-color: var(--accent-gold);
+        }
+
+        .bar-label {
+            margin-top: 10px;
+            font-weight: 700;
+            font-size: 0.9em;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .external-links {
+            background-color: var(--light-bg);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            margin: 50px 0;
+        }
+
+        .external-links h4 {
+            margin-top: 0;
+            font-size: 1.25em;
+            color: var(--primary-navy);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .external-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .external-links a {
+            color: var(--secondary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+
+        .external-links a:hover {
+            color: var(--accent-gold);
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: var(--primary-navy);
+            color: var(--white);
+            padding: 60px 0;
+            font-size: 0.95em;
+            border-top: 4px solid var(--accent-gold);
+        }
+
+        footer a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            margin: 0 15px;
+            transition: opacity 0.3s ease;
+        }
+
+        footer a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        footer p {
+            margin: 15px 0 0 0;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 992px) {
+            .hero-layout {
+                grid-template-columns: 1fr;
+            }
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+            .external-links ul {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.1em;
+            }
+            .hero p {
+                font-size: 1.1em;
+            }
+            .section-title {
+                font-size: 1.9em;
+            }
+            .article-card {
+                padding: 25px;
+            }
+            .faq-trigger {
+                padding: 18px 20px;
+                font-size: 1.05em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1><a href="/">개인사업자 정부 지원 대출 비교 가이드</a></h1>
+            <nav>
+                <a href="#intro">정부지원금 개요</a>
+                <a href="#comparison">은행별 비교</a>
+                <a href="#calculator">상환 계산기</a>
+                <a href="#guide">신청 방법</a>
+                <a href="#faq">자주 묻는 질문</a>
+            </nav>
+        </div>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-layout">
+                    <div class="hero-text">
+                        <h2>소상공인을 위한 2026년 정부 지원 대출 맞춤 컨설팅</h2>
+                        <p>까다로운 조건 비교부터 한도 및 예상 상환액 계산까지, 복잡한 재정 설계를 한 번에 해결해 드립니다.</p>
+                    </div>
+                    <div class="cta-box">
+                        <h3>실시간 비대면 맞춤형 무료 상담 신청</h3>
+                        <p>간단한 자격 조건 자가 진단을 통해 적합한 금융 브랜드를 파악하세요.</p>
+                        <form action="#" method="post" onsubmit="alert('상담 신청이 접수되었습니다. 담당 전문가가 연락드릴 예정입니다.'); return false;">
+                            <label for="user_name" class="cta-form-label">성함 또는 상호명</label>
+                            <input type="text" id="user_name" name="user_name" placeholder="대표자 성함을 입력해주세요" required>
+                            
+                            <label for="user_phone" class="cta-form-label">연락처</label>
+                            <input type="tel" id="user_phone" name="user_phone" placeholder="휴대폰 번호를 입력해주세요 (- 제외)" required>
+                            
+                            <label for="desired_amount" class="cta-form-label">희망 자금 규모 (예상 금액)</label>
+                            <select id="desired_amount" name="desired_amount" required>
+                                <option value="">선택해주세요</option>
+                                <option value="1000">1천만 원 이하</option>
+                                <option value="3000">3천만 원 이하</option>
+                                <option value="5000">5천만 원 이하</option>
+                                <option value="10000">1억 원 이하</option>
+                                <option value="over">1억 원 초과</option>
+                            </select>
+                            
+                            <button type="submit" class="cta-btn">정부 지원 가능 여부 확인하기</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" id="intro">
+            <div class="container">
+                <h2 class="section-title">2026년 개인사업자 정책 자금 완벽 분석</h2>
+                <p class="section-desc">급변하는 거시경제 지표 속에서 가장 합리적인 해결책을 제공하는 소상공인 금융 대안을 정리했습니다.</p>
+                
+                <div class="article-card">
+                    <h3>신규 자본 조달의 핵심 패러다임과 장단점 파악</h3>
+                    <p>
+                        개인사업자 및 영세 소상공인들이 경영을 영위하면서 겪는 가장 큰 장벽 중 하나는 단기 유동성 리스크입니다. 2026년도 기준, 정책 자금 공급 기관에서는 시장 완충 역할을 수행하기 위해 우대 할인 혜택을 연계한 신규 자금 상품을 대거 확충했습니다. 하지만 시장에 난립한 비인가 컨설팅 업체와 과도한 수수료를 유도하는 중개 브랜드의 폐해도 늘어나 주의가 필요합니다.
+                    </p>
+                    <p>
+                        공식 루트를 통해 실행하는 다이렉트 정책 대출은 시중 제1금융권 은행 및 제2금융권 상품 대비 중도상환 수수료가 아예 없거나 낮다는 점이 가장 큰 장점입니다. 반면 단점으로는 서류 심사와 현장 평가 단계에서 대칭형 구조와 같이 규격화된 재무 제표 지표를 요구하므로 집행 전까지 많은 기간이 소요될 수 있다는 차이점이 있습니다.
+                    </p>
+                    <p>
+                        인터넷 온라인 신청이 보편화됨에 따라 전용 앱 또는 스마트폰 어플을 활용한 간편 계산기 프로그램이 무상 제공되므로, 사전에 예상 실행 한도와 본인이 납부해야 할 월 평균 상환 원금과 이자를 정교하게 예측하는 것이 필수가 되었습니다.
+                    </p>
+                </div>
+
+                <div class="interactive-calculator" id="calculator">
+                    <h3>정부 지원 대출 예상 상환 원리금 계산기</h3>
+                    <p style="text-align: center; color: var(--text-muted); margin-top: -20px; margin-bottom: 30px;">
+                        조달하고자 하는 목표 원금과 추정 이율을 지정하여 매월 상환해야 할 비용을 정확하게 산출해 보세요.
+                    </p>
+                    <div class="calculator-grid">
+                        <div class="calc-input-group">
+                            <label for="calc_amount">희망 대출액 (단위: 만 원)</label>
+                            <input type="number" id="calc_amount" value="3000" min="100" max="100000" step="100" oninput="calculateRepayment()">
+                        </div>
+                        <div class="calc-input-group">
+                            <label for="calc_rate">연평균 추정 이자율 (%)</label>
+                            <input type="number" id="calc_rate" value="3.5" min="0.1" max="20" step="0.1" oninput="calculateRepayment()">
+                        </div>
+                        <div class="calc-input-group">
+                            <label for="calc_period">상환 기간 (개월)</label>
+                            <select id="calc_period" onchange="calculateRepayment()">
+                                <option value="12">12개월 (1년)</option>
+                                <option value="24">24개월 (2년)</option>
+                                <option value="36" selected>36개월 (3년)</option>
+                                <option value="60">60개월 (5년)</option>
+                            </select>
+                        </div>
+                        <div class="calc-input-group">
+                            <label for="calc_type">상환 방식</label>
+                            <select id="calc_type" onchange="calculateRepayment()">
+                                <option value="equal_principal_interest">원리금균등상환</option>
+                                <option value="equal_principal">원금균등상환</option>
+                            </select>
+                        </div>
+                        <div class="calc-result-box">
+                            <p>첫 달 예상 납부액 (원금 + 이자 합계)</p>
+                            <p class="result-val" id="monthly_payment_result">0 원</p>
+                            <p id="total_interest_result" style="font-size: 0.95em; color: var(--text-muted); margin-top: 10px;">총 예상 이자 지출액: 0 원</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section alt-bg" id="comparison">
+            <div class="container">
+                <h2 class="section-title">주요 정책 자금 브랜드 및 시중 금융 상품 비교</h2>
+                <p class="section-desc">어디가 나에게 제일 잘 맞고 금리가 저렴한곳인지 한눈에 분류하여 드립니다.</p>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>자금 종류 및 기관</th>
+                            <th>2026년 평균 이율 수준</th>
+                            <th>지원 최고 한도</th>
+                            <th>장점 및 핵심 가치</th>
+                            <th>단점 및 제약 요소</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>소상공인시장진흥공단 정책자금</strong></td>
+                            <td>연 2.5% ~ 3.5% 내외</td>
+                            <td>최대 7,000만 원</td>
+                            <td>정부 보증을 통한 가장 낮은 부담, 연장 조건 우수</td>
+                            <td>준비 서류의 종류가 매우 방대하여 대기 시간 김</td>
+                        </tr>
+                        <tr>
+                            <td><strong>신용보증재단 연계 협약 보증</strong></td>
+                            <td>연 3.2% ~ 4.2% 내외</td>
+                            <td>최대 1억 원 내외</td>
+                            <td>낮은 신용 평점 차주도 높은 승인율 제공</td>
+                            <td>보증을 받기 위해 약 0.5% ~ 1.0%의 연 보증수수료 발생</td>
+                        </tr>
+                        <tr>
+                            <td><strong>1금융권 은행 다이렉트 기업대출</strong></td>
+                            <td>연 4.0% ~ 5.5% 내외</td>
+                            <td>은행 자체 평가 한도</td>
+                            <td>인터넷 및 비대면 앱으로 빠른 실행 가능</td>
+                            <td>일반 담보 및 보증서가 없는 경우 한도가 협소하게 책정</td>
+                        </tr>
+                        <tr>
+                            <td><strong>서민금융진흥원 햇살론 15</strong></td>
+                            <td>연 15.0% 고정</td>
+                            <td>최대 2,000만 원</td>
+                            <td>저신용자, 다중 채무 상태라도 원활한 상담 접수</td>
+                            <td>정부 재원 보증임에도 이자 비용율이 매우 높음</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="chart-container">
+                    <h3 style="color: var(--primary-navy); margin-top: 0; font-size: 1.4em; text-align: center; margin-bottom: 30px;">
+                        연도별 정부 지원 소상공인 평균 금리 추이 분석 (2024년 ~ 2026년)
+                    </h3>
+                    <div class="bar-chart">
+                        <div class="chart-bar-wrapper">
+                            <div class="bar" style="height: 180px;">연 4.2%</div>
+                            <div class="bar-label">2024년 상반기</div>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="bar" style="height: 160px;">연 3.8%</div>
+                            <div class="bar-label">2024년 하반기</div>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="bar" style="height: 140px;">연 3.3%</div>
+                            <div class="bar-label">2025년 상반기</div>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="bar" style="height: 120px;">연 2.9%</div>
+                            <div class="bar-label">2025년 하반기</div>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="bar highlight" style="height: 110px;">연 2.7%</div>
+                            <div class="bar-label">2026년 현재 예상</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" id="guide">
+            <div class="container">
+                <h2 class="section-title">체계적인 비대면 다이렉트 심사 준비 5단계</h2>
+                <p class="section-desc">오프라인 지점 내방 없이도 비대면 모바일 기기만을 이용해 높은 한도를 타진할 수 있는 전략입니다.</p>
+
+                <div class="article-card">
+                    <h3>1. 세무 자료 및 소득 증빙 기초 서류의 전자적 일괄 전송</h3>
+                    <p>
+                        토스(Toss), 카카오톡 또는 주요 은행사 앱을 실행하면 마이데이터를 근간으로 국세청 홈택스 등에 보관된 사업자등록증명원, 부가가치세과세표준증명원, 소득금액증명원 등의 민원 문서를 안전하게 자동 제출할 수 있습니다. 디지털 서류 수집은 승인 소요 기간을 대폭 축소해 주며 실시간 금리 가산 할인 조정을 받는 데 크게 공헌합니다.
+                    </p>
+
+                    <h3>2. 본인 인증 및 최신 핀테크 모바일 기기 구비</h3>
+                    <p>
+                        주요 정부 대출 보증기관의 경우 온라인 직접 자격 조회 및 공동인증서를 이용한 인증을 적극적으로 전면 시행 중입니다. 스마트 기기에 최적화된 최신 뱅킹 어플 설치 및 개인사업자 명의의 휴대전화 개통 여부를 확인해야 전산 연동에 오류가 발생하지 않습니다.
+                    </p>
+
+                    <h3>3. 가산 가점 우대 인프라 점검</h3>
+                    <p>
+                        전통적인 오프라인 업소라 할지라도 혁신 기술 등급, 특허 증명서, 제로페이 가맹 여부, 여성기업 지원 및 청년창업 해당 여부 등 세부 사항을 꼼꼼하게 등록하면 보증 심사 시 우대 할인율이 적용되어 시중의 가장 싼곳 수준보다 우세한 조건으로 최종 가입이 이행될 수 있습니다.
+                    </p>
+
+                    <h3>4. 신규 대환 대상 채무 정리</h3>
+                    <p>
+                        과도하게 고이율로 조달해 사용 중이던 2금융권 채무가 누적되어 있다면, 정부 주도 정책 대환 프로그램 자금을 적극 활용해 저이율 상품으로 채무를 통합하는 방식이 대단히 유리합니다. 이를 통해 신용 평점 등급 점수를 개선하고 나아가 다중 채무 리스크를 선제적으로 감소시킬 수 있습니다.
+                    </p>
+
+                    <h3>5. 비금융 지표 및 신용 자산 관리</h3>
+                    <p>
+                        단순 매출 지표 이외에도 성실 납세 실적, 고용 유지 여부 등 비금융적 지표가 최근 고도화된 네이버, 구글 검색 중심의 AI 정량적 평가 시스템에 의해 자동으로 분류됩니다. 세금 체납이나 통신비 연체 내역이 있다면 가장 최우선적으로 정리해 두어야 불필요한 거절 판정을 배제할 수 있습니다.
+                    </p>
+                </div>
+
+                <div class="keyword-cloud">
+                    <h3>관련성 높은 관심 키워드 및 연관 카테고리</h3>
+                    <div class="cloud-tags">
+                        <span>#개인사업자정부지원대출</span>
+                        <span>#소상공인정책자금금리</span>
+                        <span>#신용보증재단무담보대출</span>
+                        <span>#서민금융진흥원햇살론</span>
+                        <span>#개인사업자대환자금비교</span>
+                        <span>#창업소상공인지원금조건</span>
+                        <span>#비대면다이렉트대출어플</span>
+                        <span>#토스소상공인한도계산기</span>
+                        <span>#정부정책자금장단점</span>
+                        <span>#저신용사업자긴급융자</span>
+                        <span>#미소금융창업자금한도</span>
+                        <span>#청년창업우대보증요건</span>
+                        <span>#개인사업자DSR제외상품</span>
+                        <span>#주택금융공사보증대출</span>
+                        <span>#중소기업진흥공단정책자금</span>
+                        <span>#지역신보소상공인보증서</span>
+                        <span>#디시소상공인대출후기</span>
+                        <span>#펨코개인사업자융자정보</span>
+                        <span>#보배드림정부지원성공수기</span>
+                        <span>#소상공인방역지원금대체</span>
+                        <span>#일반신용대출금리차이</span>
+                        <span>#원리금균등분할상환계산</span>
+                        <span>#1금융권개인사업자전용</span>
+                        <span>#비대면무방문서류제출</span>
+                        <span>#중도상환수수료면제방법</span>
+                        <span>#소진공희망대출조건</span>
+                        <span>#기업은행소상공인대출</span>
+                        <span>#농협햇살론신청방법</span>
+                        <span>#신한은행개인사업자다이렉트</span>
+                        <span>#국민은행소상공인지원금</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section alt-bg" id="faq">
+            <div class="container">
+                <h2 class="section-title">자주 질문하시는 사항 일괄 정리 (FAQ)</h2>
+                <p class="section-desc">소상공인 전용 플랫폼 이용 시 빈번하게 문의하는 쟁점을 상세히 정리해 드립니다.</p>
+
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <div class="faq-trigger">Q1. 인터넷 블로그 등에서 사은품으로 백화점 상품권이나 대량의 현금지원을 조건으로 혜택을 제공한다고 권유하는데 안전한가요?</div>
+                        <div class="faq-content">
+                            정부 재원의 대출 상품 및 보증 자금을 실행할 때는 금융 관련 법규와 정책기관 규정에 따라 대출 고객 모집인이나 컨설팅 중개 대행사가 사은품, 현금지원을 포함하여 어떠한 유인책을 직접 제공하는 일은 전면 불법으로 금지되어 있습니다. 불법 사설 업체나 검증되지 않은 인플루언서 마케팅 사이트의 유혹적인 문구에 현혹되지 마시고, 공인된 국가지원 협약 은행사 모바일 앱에서 자격을 정확하게 타진하시기 바랍니다.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-trigger">Q2. 저의 매출 추이에 비해 최대로 실행될 것으로 예상하는 기대 금액은 어떻게 직접 산출하나요?</div>
+                        <div class="faq-content">
+                            가장 간편한 자가 검사 방식은 본인 사업체의 연간 부가가치세 과세표준 증명원상의 매출액에서 현재 보유 중인 기대출 잔액을 차감하는 형식입니다. 보증기관에서는 이 계산 방식을 기반으로 연 매출액 대비 최대 25%에서 33% 영역을 한도 보증서 발급 구간으로 정하며, 토스나 카카오뱅크 같은 대중적인 금융 앱 내부의 다이렉트 한도 예측 도구 등을 통해 빠르게 대략의 금액을 가상 산출할 수 있습니다.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-trigger">Q3. 서민금융진흥원 햇살론이나 미소금융 대출의 장점과 단점은 무엇이며 신청 순위는 어떻게 되나요?</div>
+                        <div class="faq-content">
+                            서민금융진흥원의 햇살론 상품은 높은 전산 통과율과 저신용 차주 유입 능력이 강점이지만, 정책 우대 이율에 비해 비교적 연이율 수치가 상대적으로 높은 수준으로 유지된다는 점이 단점입니다. 이와 반대로 미소금융 무담보 창업 지원금 등은 극도로 저렴한 수준의 실질 이자로 대부되나, 오프라인으로 1대1 장기 컨설팅 상담 및 엄격한 경영 계획서 제출을 마쳐야만 자금이 나오는 까다로움이 있어 양자 간의 속성 차이가 명확합니다. 신청 순위는 금리가 극단적으로 낮은 소상공인진흥공단 직접 정책자금을 최우선으로 두며, 그 다음 신용보증재단 보증서 발급, 최후순위로 서민금융진흥원 상품을 비교 순차 제안합니다.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-trigger">Q4. 인공지능 플랫폼(Gemini, ChatGPT)이나 각종 온라인 커뮤니티(디시인사이드, 에펨코리아)에서 자격 정보를 참고하는 것은 공신력이 있나요?</div>
+                        <div class="faq-content">
+                            커뮤니티의 경우 실제 사용자들이 체감한 내돈내산 실행 경험담과 지점별 분위기를 직접 관찰하기 좋은 채널입니다. 또한 인공지능 알고리즘은 복잡한 심사 조건을 논리적으로 요약하는 데 기여하지만, 사용자의 개별 담보 평가나 최신 연체 일수 등의 고유 정보까지 반영해 주지는 못하므로 맹신해서는 안 됩니다. 대략적인 추이를 도출한 직후에는 항상 공식 웹 사이트를 거치거나 제1금융권 영업지점을 통해 정식 심사를 타진해야만 오차를 극소화할 수 있습니다.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="external-links">
+                    <h4>공인된 신뢰성 있는 공식 정책 유관 기관 웹 사이트</h4>
+                    <ul>
+                       <li><a href="https://www.semas.or.kr" target="_blank" rel="noopener noreferrer">소상공인시장진흥공단 통합 공식 포털 사이트</a></li>
+                        <li><a href="https://www.fsc.go.kr" target="_blank" rel="noopener noreferrer">금융위원회 금융 정책 및 법령 지침 확인처</a></li>
+                        <li><a href="https://www.fss.or.kr" target="_blank" rel="noopener noreferrer">금융감독원 보이스피싱 및 불법 금융사기 피해 예방센터</a></li>
+                        <li><a href="https://namu.wiki" target="_blank" rel="noopener noreferrer">나무위키 서민금융진흥원 및 정책자금 정보 아카이브</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
     </main>
-  </body>
-</html>
+
+    <script>
+        document.querySelectorAll('.faq-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const item = trigger.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        function calculateRepayment() {
+            const amountInput = document.getElementById('calc_amount');
+            const rateInput = document.getElementById('calc_rate');
+            const periodInput = document.getElementById('calc_period');
+            const typeInput = document.getElementById('calc_type');
+
+            const amount = parseFloat(amountInput.value) * 10000; 
+            const annualRate = parseFloat(rateInput.value) / 100;
+            const period = parseInt(periodInput.value);
+            const type = typeInput.value;
+
+            if (isNaN(amount) || isNaN(annualRate) || isNaN(period) || amount <= 0 || annualRate < 0) {
+                return;
+            }
+
+            const monthlyRate = annualRate / 12;
+            let firstMonthPayment = 0;
+            let totalInterest = 0;
+
+            if (type === 'equal_principal_interest') {
+                if (monthlyRate === 0) {
+                    firstMonthPayment = amount / period;
+                    totalInterest = 0;
+                } else {
+                    firstMonthPayment = amount * (monthlyRate * Math.pow(1 + monthlyRate, period)) / (Math.pow(1 + monthlyRate, period) - 1);
+                    totalInterest = (firstMonthPayment * period) - amount;
+                }
+            } else {
+                const monthlyPrincipal = amount / period;
+                const firstMonthInterest = amount * monthlyRate;
+                firstMonthPayment = monthlyPrincipal + firstMonthInterest;
+                
+                for (let i = 0; i < period; i++) {
+                    const remainingBalance = amount - (monthlyPrincipal * i);
+                    totalInterest += remainingBalance * monthlyRate;
+                }
+            }
+
+            document.getElementById('monthly_payment_result').innerText = Math.round(firstMonthPayment).toLocaleString() + ' 원';
+            document.getElementById('total_interest_result').innerText = '총 예상 이자 지출액: ' + Math.round(totalInterest).toLocaleString() + ' 원';
+        }
+
+        window.onload = function() {
+            calculateRepayment();
+        };
+    </script>
+  
